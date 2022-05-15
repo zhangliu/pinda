@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import { View, Text } from '@tarojs/components'
-import './index.scss'
 
 export default class Index extends Component {
 
@@ -17,7 +16,7 @@ export default class Index extends Component {
   render () {
     return (
       <View className='index'>
-        <Text className='c:ff0000 d:f jc:c ai:c'>Hello world23!</Text>
+        <Text className='c:ff0000'>Hello world33!</Text>
       </View>
     )
   }
