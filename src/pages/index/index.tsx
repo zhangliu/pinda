@@ -1,23 +1,20 @@
-import { Component } from 'react'
-import { View, Text } from '@tarojs/components'
+import Tarojs from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import { AtTabs, AtTabsPane } from 'taro-ui'
 
-export default class Index extends Component {
-
-  componentWillMount () { }
-
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
-    return (
-      <View className='index'>
-        <Text className='c:ff0000'>Hello world33!</Text>
-      </View>
-    )
+export default () => {
+  const handleClick = () => {
+    Tarojs.redirectTo({ url: '/pages/acts/index' })
   }
+  const tabList = [{ title: '标签页1' }, { title: '标签页2' }, { title: '标签页3' }]
+  return (
+    <AtTabs current={1} tabList={tabList} onClick={handleClick}>
+      <AtTabsPane current={1} index={0} >
+        <View>标签页一的内容</View>
+      </AtTabsPane>
+      <AtTabsPane current={1} index={0} >
+        <View>标签页二的内容</View>
+      </AtTabsPane>
+    </AtTabs>
+  )
 }
