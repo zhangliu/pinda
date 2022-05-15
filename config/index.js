@@ -1,3 +1,25 @@
+const addCtcLoader = (chain) => {
+  chain.merge({
+    module: {
+      rule: {
+        ctcLoader: {
+          test: /\.tsx$/,
+          use: [{
+            loader: '@byted/class-to-css-loader',
+            options: {
+              type: 'react',
+              rules: [
+                { key: 'maw', valReg: /n/, css: 'max-width: none' },
+                { key: 'tof', valReg: /e/, css: 'text-overflow: ellipsis' },
+              ],
+            }
+          }]
+        }
+      }
+    }
+  })
+}
+
 const config = {
   projectName: 'danshen',
   date: '2022-5-15',
@@ -40,7 +62,8 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
-    }
+    },
+    webpackChain: (chain) => addCtcLoader(chain)
   },
   h5: {
     publicPath: '/',
@@ -59,27 +82,7 @@ const config = {
         }
       }
     },
-    webpackChain (chain) {
-      chain.merge({
-        module: {
-          rule: {
-            ctcLoader: {
-              test: /\.tsx$/,
-              use: [{
-                loader: '@byted/class-to-css-loader',
-                options: {
-                  type: 'react',
-                  rules: [
-                    { key: 'maw', valReg: /n/, css: 'max-width: none' },
-                    { key: 'tof', valReg: /e/, css: 'text-overflow: ellipsis' },
-                  ],
-                }
-              }]
-            }
-          }
-        }
-      })
-    }
+    webpackChain: (chain) => addCtcLoader(chain)
   }
 }
 
