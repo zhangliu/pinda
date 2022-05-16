@@ -1,19 +1,21 @@
-import Tarojs from '@tarojs/taro'
+import { useState } from 'react'
 import { View } from '@tarojs/components'
 import { AtTabs, AtTabsPane } from 'taro-ui'
+import SinglePosts from '../../components/singlePosts'
 
 export default () => {
-  const handleClick = () => {
-    Tarojs.redirectTo({ url: '/pages/acts/index' })
-  }
-  const tabList = [{ title: '标签页1' }, { title: '标签页2' }, { title: '标签页3' }]
+  const [current, setCurrent] = useState(0)
+  const tabList = [{ title: '脱单' }, { title: '活动（建设中...）' }]
+
   return (
-    <AtTabs current={1} tabList={tabList} onClick={handleClick}>
-      <AtTabsPane current={1} index={0} >
-        <View>标签页一的内容</View>
+    <AtTabs current={current} tabList={tabList} onClick={setCurrent}>
+      <AtTabsPane current={current} index={0} >
+        <View className='ml:32 mr:32 pt:32'>
+          <SinglePosts />
+        </View>
       </AtTabsPane>
-      <AtTabsPane current={1} index={0} >
-        <View>标签页二的内容</View>
+      <AtTabsPane current={current} index={1} >
+        <View>建设中...</View>
       </AtTabsPane>
     </AtTabs>
   )
