@@ -23,7 +23,7 @@ export default () => {
           <View className='fs:24 c:999 ml:20 mr:20'>|</View>
           <View className='c:999'><DiffTime person={person} /></View>
         </View>
-        <View className='fs:32 of:h ws:n tof:e maw:640 c:999'>{person.detail}</View>
+        <View className='fs:28 of:h ws:n tof:e maw:640 c:999'>{person.detail}</View>
       </View>
     )
   }
