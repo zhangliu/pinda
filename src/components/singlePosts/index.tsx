@@ -1,11 +1,21 @@
+import { useState } from 'react'
 import { View } from '@tarojs/components'
 import Tarojs from '@tarojs/taro'
 import { AtTag } from "taro-ui"
 import DiffTime from '../diffTime'
 import AddPostButton from './addPostButton'
+import PostDetailModal from './postDetailModal'
 import personData from '../../personData'
 
 export default () => {
+  const [currentPost, setCurrentPost] = useState({})
+  const [isOpened, setIsOpened] = useState(false)
+
+  const onClickPost = (post) => {
+    setCurrentPost(post)
+    setIsOpened(true)
+  }
+
   const renderPost = (person, index) => {
     const title = index < 3
       ? <View className='c:ee0000 fs:32 of:h ws:n tof:e maw:600'>{person.title}</View>
@@ -15,7 +25,7 @@ export default () => {
       : (<AtTag size='small' type='primary' className='bgc:ff8f1f c:fff mr:8'>婚介</AtTag>)
 
     return (
-      <View className='pt:20 pb:20 bw:0 btw:1 bc:eee bs:s'>
+      <View className='pt:20 pb:20 bw:0 btw:1 bc:eee bs:s' onClick={() => onClickPost(person)}>
         <View className='d:f ai:c mb:8'>
           {tag}{title}
         </View>
@@ -37,6 +47,7 @@ export default () => {
       {
         personData.map(renderPost)
       }
+      <PostDetailModal post={currentPost} isOpened={isOpened} onClose={() => setIsOpened(false)} />
     </View>
   )
 }
