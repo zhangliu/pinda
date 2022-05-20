@@ -2,6 +2,7 @@ import { View } from '@tarojs/components'
 import Tarojs from '@tarojs/taro'
 import { AtTag } from "taro-ui"
 import DiffTime from '../diffTime'
+import AddPostButton from './addPostButton'
 import personData from '../../personData'
 
 export default () => {
@@ -29,7 +30,10 @@ export default () => {
   }
   return (
     <View>
-      <View className='fs:32 mb:8 c:999'>共 {personData.length} 条征友信息</View>
+      <View className='d:f jc:sb'>
+        <View className='fs:32 mb:8 c:999'>共 {personData.length} 条征友信息</View>
+        <AddPostButton />
+      </View>
       {
         personData.map(renderPost)
       }
