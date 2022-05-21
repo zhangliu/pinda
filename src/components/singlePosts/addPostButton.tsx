@@ -12,7 +12,7 @@ export default () => {
         type='primary'
         onClick={() => setIsOpened(true)}
       >
-        <AtIcon value='add' className='fs:18 mb:2' />
+        <AtIcon value='add' className='fs:18 mb:4' />
       </AtButton>
       <AddPostModal isOpened={isOpened} onClose={() => setIsOpened(false)} />
     </View>

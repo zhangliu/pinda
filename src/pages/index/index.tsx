@@ -10,14 +10,13 @@ export default () => {
 
   // 处理分享
   Taro.useShareAppMessage(res => {
-    console.log(res, 'xxxxx')
     return {
-      title: '马鞍山单身圈'
+      title: '马鞍山单身群助手'
     }
   })
   Taro.useShareTimeline(() => {
     return {
-      title: '马鞍山本地单身圈'
+      title: '马鞍山单身群助手'
     }
   })
 
