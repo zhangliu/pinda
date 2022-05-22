@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import SinglePosts from '../../components/singlePosts'
+// import GetUserButton from '../../components/getUserButton'
 
 export default () => {
   const [current, setCurrent] = useState(0)
@@ -24,6 +25,7 @@ export default () => {
     // <AtTabs current={current} tabList={tabList} onClick={setCurrent}>
     //   <AtTabsPane current={current} index={0} >
         <View className='ml:32 mr:32 pt:32'>
+          {/* <GetUserButton title='分享' /> */}
           <SinglePosts />
         </View>
     //   </AtTabsPane>
