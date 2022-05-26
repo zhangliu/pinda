@@ -10,6 +10,38 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=QED9gvY4qVwPLtmWcdB1oZAegDAjWeSs"></script>
+    <script type="text/javascript">
+      var map = new BMapGL.Map("allmap");
+
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            console.log( position.coords.longitude );
+            console.log( position.coords.latitude );
+          },
+          function (e) {
+            throw(e.message);
+          }
+        )
+      }
+
+      var point = new BMapGL.Point(116.331398,39.897445);
+      map.centerAndZoom(point,12);
+      
+      var geolocation = new BMapGL.Geolocation();
+      geolocation.getCurrentPosition(function(r){
+          if(this.getStatus() == BMAP_STATUS_SUCCESS){
+              var mk = new BMapGL.Marker(r.point);
+              map.addOverlay(mk);
+              map.panTo(r.point);
+              console.log(r, 'xxxxxxxxxxxxxxxxxxx')
+          }
+          else {
+            console.log('failed' + this.getStatus())
+          }        
+      });
+    </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
