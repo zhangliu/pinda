@@ -8,6 +8,7 @@ const addCtcLoader = (chain) => {
             loader: '@byted/class-to-css-loader',
             options: {
               type: 'react',
+              unit: 'PX',
               rules: [
                 { key: 'maw', valReg: /n/, css: 'max-width: none' },
                 { key: 'tof', valReg: /e/, css: 'text-overflow: ellipsis' },

@@ -5,4 +5,8 @@ deploy_versions/
 node_modules/
 .DS_Store
 yarn.lock
+package-lock.json
 *.ctc.css
+
+# old-h5
+old-h5/backend/src/utils/db.js
