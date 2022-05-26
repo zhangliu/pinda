@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build && rm -rf build/static/*/*.map && rm -rf ../mas && mv build ../mas",
+    "build": "react-app-rewired build && rm -rf build/static/*/*.map && rm -rf ../../mas && mv build ../../mas",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
