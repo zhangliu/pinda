@@ -1,0 +1,1 @@
+export const isAgent = people => !!people.from
