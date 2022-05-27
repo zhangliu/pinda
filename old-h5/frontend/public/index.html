@@ -12,8 +12,6 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=QED9gvY4qVwPLtmWcdB1oZAegDAjWeSs"></script>
     <script type="text/javascript">
-      var map = new BMapGL.Map("allmap");
-
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           function (position) {
@@ -26,6 +24,7 @@
         )
       }
 
+      var map = new BMapGL.Map("allmap");
       var point = new BMapGL.Point(116.331398,39.897445);
       map.centerAndZoom(point,12);
       
