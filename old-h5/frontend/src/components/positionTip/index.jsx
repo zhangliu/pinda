@@ -18,7 +18,7 @@ export default () => {
       }
       else {
         setStatus(this.getStatus())
-        setContent(`获取位置信息失败，错误码：${this.getStatus()}`)
+        setContent(`获取位置信息失败，错误码：${this.getStatus()}，请确认您打开了定位服务！`)
       }        
     });
   }, [])
