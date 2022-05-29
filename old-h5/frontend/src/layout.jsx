@@ -11,9 +11,8 @@ export default (props) => {
     Modal.alert({
       content: (
         <div>
-          <div>请加微信：zhangliu2 进「马鞍山单身群」发布您的信息：</div>
-          {/* <div>请进群找群主发布您的信息：</div> */}
-          {/* <img className="w:100%" src={qrCode} /> */}
+          <div>请进群找群主发布您的信息：</div>
+          <img className="w:100%" src={qrCode} />
         </div>
       )
     })

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cd ./frontend && npm start",
     "build": "cd ./frontend && npm run build && cd ..",
-    "pub": "npm run build && cd .. && git add . && git commit -m 'modify' && git push && cd old-h5",
+    "pub": "npm run build && cd .. && git add . && git commit -m 'modify' && cd old-h5 && git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
