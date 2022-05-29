@@ -179,7 +179,7 @@ export default [
   {
     id: 13,
     nickName: '刘star（代发）',
-    title: '90年短婚未育，独女',
+    title: '90年女征男',
     publicTime: '2022-05-29 17:00:00',
     sex: 'girl',
     birthday: '1990',
@@ -192,7 +192,7 @@ export default [
   {
     id: 13,
     nickName: '刘star（代发）',
-    title: '85年男，短婚未育',
+    title: '85年男征女',
     publicTime: '2022-05-29 17:00:00',
     sex: 'girl',
     birthday: '1990',
