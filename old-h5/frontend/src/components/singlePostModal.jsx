@@ -1,30 +1,58 @@
-import React from 'react'
-import { Modal, Form, Input, TextArea, Button } from 'antd-mobile'
+import React, { useState } from 'react'
+import { Modal, Form, Input, TextArea, Button, Toast } from 'antd-mobile'
+import { getCurrentPosition } from '../utils/position';
+import cos, { REGISTRY } from '../utils/cos';
+import cache, { PHONE } from '../utils/cache'
 
 const show = () => {
-  const content = (
-    <Form
-      className='pt:8 w:100%'
-      footer={<Button block type='submit' color='primary'>提交</Button>}
-    >
-      <Form.Header><div className='d:f jc:c c:666 fw:b'>发布信息</div></Form.Header>
-      {/* <Form.Item name='nickName' label='我的昵称' rules={[{ required: true }]}>
-        <Input placeholder='请输入昵称'  />
-      </Form.Item> */}
-      <Form.Item name='phone' label='手机号码' rules={[{ required: true }]}>
-        <Input placeholder='用户跟您申请后才能查看号码' />
-      </Form.Item>
-      <Form.Item name='desc' label='我的简介' rules={[{ required: true }]}>
-        <TextArea placeholder='例如：我是一名老师，身高162，本科学历，...' />
-      </Form.Item>
-    </Form>
-  )
-
   Modal.show({
-    content,
+    content: <InfoForm />,
     closeOnMaskClick: true,
   })
 };
+
+const InfoForm = () => {
+  const [loading, setLoading] = useState(false)
+
+  const onFinish = async (data) => {
+    try {
+      if (cache.get(PHONE) === data.phone) {
+        Toast.show(`您已提交了 ${data.phone} 的信息，请不要重复提交哦！`)
+        return
+      }
+      setLoading(true)
+      const position = await getCurrentPosition(true)
+      await PostData({ ...data, position })
+      cache.set(PHONE, data.phone)
+      Toast.show({ icon: 'success', content: `提交成功，管理员将会稍后联系您进行审核！` })
+      Modal.clear()
+    } catch(error) {
+      Toast.show({ icon: 'fail', content: `${error.message}，请微信联系：zhangliu2 解决！` })
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const PostData = async (data) => {
+    return cos.put(`${REGISTRY}_${Date.now()}`, data)
+  }
+
+  return (
+    <Form
+      className='pt:8 w:100%'
+      onFinish={onFinish}
+      footer={<Button block type='submit' loading={loading} color='primary'>提交</Button>}
+    >
+      <Form.Header><div className='d:f jc:c c:666 fw:b'>发布信息</div></Form.Header>
+      <Form.Item name='phone' label='联系方式（微信号）' rules={[{ required: true }]}>
+        <Input placeholder='用于管理员联系审核' />
+      </Form.Item>
+      <Form.Item name='desc' label='我的简介' rules={[{ required: true }]}>
+        <TextArea placeholder='简单介绍下您的情况^^' />
+      </Form.Item>
+    </Form>
+  )
+}
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

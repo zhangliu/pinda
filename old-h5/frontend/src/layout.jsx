@@ -1,21 +1,22 @@
-import { Button, NavBar, Modal } from 'antd-mobile'
+import { Button, NavBar } from 'antd-mobile'
 import { useNavigate } from 'react-router-dom'
-// import singlePostModal from './components/singlePostModal'
-import qrCode from './assert/imgs/qrCode.jpeg'
+import singlePostModal from './components/singlePostModal'
+// import qrCode from './assert/imgs/qrCode.jpeg'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (props) => {
   const navigate = useNavigate()
 
   const showModal = () => {
-    Modal.alert({
-      content: (
-        <div>
-          <div>请进群找群主发布您的信息：</div>
-          <img className="w:100%" src={qrCode} />
-        </div>
-      )
-    })
+    singlePostModal.show()
+    // Modal.alert({
+    //   content: (
+    //     <div>
+    //       <div>请进群找群主发布您的信息：</div>
+    //       <img className="w:100%" src={qrCode} />
+    //     </div>
+    //   )
+    // })
   }
 
   return (
