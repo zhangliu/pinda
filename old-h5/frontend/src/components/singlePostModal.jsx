@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Modal, Form, Input, TextArea, Button, Toast } from 'antd-mobile'
 import { getCurrentPosition } from '../utils/position';
 import cos, { REGISTRY } from '../utils/cos';
-import cache, { PHONE } from '../utils/cache'
 
 const show = () => {
   Modal.show({
@@ -16,14 +15,9 @@ const InfoForm = () => {
 
   const onFinish = async (data) => {
     try {
-      if (cache.get(PHONE) === data.phone) {
-        Toast.show(`您已提交了 ${data.phone} 的信息，请不要重复提交哦！`)
-        return
-      }
       setLoading(true)
       const position = await getCurrentPosition(true)
       await PostData({ ...data, position })
-      cache.set(PHONE, data.phone)
       Toast.show({ icon: 'success', content: `提交成功，管理员将会稍后联系您进行审核！` })
       Modal.clear()
     } catch(error) {
@@ -34,7 +28,7 @@ const InfoForm = () => {
   }
 
   const PostData = async (data) => {
-    return cos.put(`${REGISTRY}_${Date.now()}`, data)
+    return cos.put(`${REGISTRY}_${data.phone}`, data)
   }
 
   return (
