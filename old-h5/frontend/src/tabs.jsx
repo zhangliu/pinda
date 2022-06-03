@@ -1,6 +1,6 @@
 import { Tabs } from 'antd-mobile'
 import { useLocation, useNavigate } from 'react-router-dom'
-import PositionTip from './components/positionTip'
+// import PositionTip from './components/positionTip'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (props) => {
@@ -11,7 +11,7 @@ export default (props) => {
   return (
     <Tabs activeKey={activeKey} onChange={onChange}>
       <Tabs.Tab title='脱单' key='person'>
-        <PositionTip />
+        {/* <PositionTip /> */}
         {props.children}
       </Tabs.Tab>
       <Tabs.Tab title={<div className='c:999'>活动（建设中）</div>} key='activity'>
