@@ -201,6 +201,20 @@ export default [
     work: '',
     from: '',
     detail: `独子，马鞍山本地人，短婚未育，1985年，身高173，本科学历，国企工作，五险一金，两套商品房，全款宝马，父母均有退休金。欲寻1985-1992年短婚未育的女生，身高158以上，瘦，不能是胖子，大专以上学历，有工作。`,
+  },
+  {
+    // {"phone":"18755518690","desc":"90年，身高160，幼师工作","position":{"accuracy":30,"altitude":null,"altitudeAccuracy":null,"heading":null,"latitude":31.692859311006,"longitude":118.51642001274,"speed":null,"timestamp":null,"point":{"lng":118.51642001274,"lat":31.692859311006},"address":{"country":"","city":"马鞍山市","city_code":0,"district":"花山区","province":"安徽省","street":"湖东中路","street_number":"19号"}}}
+    id: 14,
+    nickName: '元满',
+    title: '90年女征男',
+    publicTime: '2022-06-09 21:00:00',
+    sex: 'girl',
+    birthday: '1990',
+    property: '',
+    edu: '',
+    work: '',
+    from: '',
+    detail: `90年，身高160，幼师工作，居住在 花山区-湖东中路`,
   }
 ].sort((a, b) => {
   const time1 = new Date(a.publicTime)
