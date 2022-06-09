@@ -26,7 +26,7 @@ export default [
   },
   {
     id: 3,
-    nickName: '知足常乐',
+    nickName: '杨胜（联通、电信，话费充90到100）',
     title: '91年男建筑造价师',
     publicTime: '2022-05-01 12:00:32',
     sex: 'boy',
