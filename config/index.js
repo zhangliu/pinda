@@ -5,7 +5,7 @@ const addCtcLoader = (chain) => {
         ctcLoader: {
           test: /\.tsx$/,
           use: [{
-            loader: '@byted/class-to-css-loader',
+            loader: 'class-to-css-loader',
             options: {
               type: 'react',
               unit: 'PX',

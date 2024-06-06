@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
-    "@byted/class-to-css-loader": "^3.1.30",
+    "class-to-css-loader": "^5.0.5",
     "@tarojs/mini-runner": "3.4.9",
     "@tarojs/webpack-runner": "3.4.9",
     "@types/react": "^17.0.2",

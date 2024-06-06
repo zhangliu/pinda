@@ -4,7 +4,7 @@ module.exports = override(
   (config) => {
     config.module.rules.push({
       test: /\.jsx$/,
-      loader: '@byted/class-to-css-loader',
+      loader: 'class-to-css-loader',
       options: {
         type: 'react',
         rules: [
