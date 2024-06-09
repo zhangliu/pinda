@@ -26,7 +26,7 @@ export default (props) => {
           onBack={() => navigate(-1)}
           right={<Button onClick={showModal} color='primary' size='mini'>发布信息</Button>}
         >
-          <div onClick={() => navigate('/person')}>马鞍山单身群</div>
+          <div onClick={() => navigate('/person')}>趣拼搭</div>
         </NavBar>
       </div>
       <div className='pt:16'>

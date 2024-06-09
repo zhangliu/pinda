@@ -12,12 +12,12 @@ export default () => {
   // 处理分享
   Taro.useShareAppMessage(res => {
     return {
-      title: '马鞍山单身群助手'
+      title: '趣拼搭'
     }
   })
   Taro.useShareTimeline(() => {
     return {
-      title: '马鞍山单身群助手'
+      title: '趣拼搭'
     }
   })
 

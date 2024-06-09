@@ -52,7 +52,7 @@ export default () => {
     Modal.alert({
       content: (
         <div>
-          <div>请加微信：zhangliu2 进「马鞍山单身群」根据昵称「{person.nickName}」查找该{sex}士：</div>
+          <div>请加微信：zhangliu2 进「趣拼搭群」</div>
           {/* <img className='w:100%' src={qrCode} /> */}
         </div>
       )

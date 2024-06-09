@@ -9,7 +9,7 @@ export default ({ isOpened, onClose, post }) => {
       <AtModalContent>
         {post.detail}
         <AtNoticebar className='mt:20'>
-          请加微信：zhangliu2 加入「马鞍山单身群」，根据群昵称「{post.nickName}」查找该{sex}士
+          请加微信：zhangliu2 加入「趣拼搭」，根据群昵称「{post.nickName}」查找该{sex}士
         </AtNoticebar>
       </AtModalContent>
       <AtModalAction>

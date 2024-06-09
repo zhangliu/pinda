@@ -1,5 +1,5 @@
 export default definePageConfig({
-  navigationBarTitleText: '马鞍山单身群助手',
+  navigationBarTitleText: '趣拼搭',
   enableShareAppMessage: true,
   enableShareTimeline: true,
 })
