@@ -1,3 +1,5 @@
+import path from 'path';
+
 const addCtcLoader = (chain) => {
   chain.merge({
     module: {
@@ -22,13 +24,16 @@ const addCtcLoader = (chain) => {
 }
 
 const config = {
-  projectName: 'danshen',
+  projectName: 'pinda',
   date: '2022-5-15',
   designWidth: 750,
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
     828: 1.81 / 2
+  },
+  alias: {
+    'src': path.resolve(__dirname, '..', 'src'),
   },
   sourceRoot: 'src',
   outputRoot: 'dist',

@@ -1,23 +1,21 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtTabs, AtTabsPane } from 'taro-ui'
-import SinglePosts from '../../components/singlePosts'
-// import GetUserButton from '../../components/getUserButton'
 
 export default () => {
-  const [current, setCurrent] = useState(0)
-  const tabList = [{ title: '脱单' }, { title: '活动（建设中...）' }]
+  useEffect(() => {
+    Taro.redirectTo({url: '/pages/activity/index'});
+  }, []);
 
   // 处理分享
   Taro.useShareAppMessage(res => {
     return {
-      title: '趣拼搭'
+      title: '拼搭子'
     }
   })
   Taro.useShareTimeline(() => {
     return {
-      title: '趣拼搭'
+      title: '拼搭子'
     }
   })
 
@@ -25,8 +23,9 @@ export default () => {
     // <AtTabs current={current} tabList={tabList} onClick={setCurrent}>
     //   <AtTabsPane current={current} index={0} >
         <View className='ml:32 mr:32 pt:32'>
+          <View>3333444</View>
           {/* <GetUserButton title='分享' /> */}
-          <SinglePosts />
+          {/* <SinglePosts /> */}
         </View>
     //   </AtTabsPane>
     //   <AtTabsPane current={current} index={1} >

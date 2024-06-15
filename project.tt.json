@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "danshen",
+  "projectname": "pinda",
   "appid": "testAppId",
   "setting": {
     "es6": false,

@@ -1,15 +1,27 @@
-const SECOND = 1000
-const MINUTE = 60 * SECOND
-const HOUR = 60 * MINUTE
-const DAY = 24 * HOUR
-const MONTH = 30 * DAY
-const YEAR = 12 * MONTH
+const weekdayMap = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
-export const getDiffTime = (time1, time2) => {
-  const startTime = new Date(time1).getTime()
-  const endTime = new Date(time2).getTime()
+export const SECOND = 1000
+export const MINUTE = 60 * SECOND
+export const HOUR = 60 * MINUTE
+export const DAY = 24 * HOUR
+export const MONTH = 30 * DAY
+export const YEAR = 12 * MONTH
 
-  let diffTime = startTime - endTime
+export const getWeekday = (date: number | Date) => weekdayMap[new Date(date).getDay()];
+
+export const getPeriodName = (date: number | Date) => {
+    const hours = new Date(date).getHours();
+
+    if (hours < 12) return '上午';
+    if (hours < 18) return '下午';
+    return '晚上';
+};
+
+export const getDiffTime = (sTime: number | Date, eTime: number | Date) => {
+  const startTime = new Date(sTime).getTime()
+  const endTime = new Date(eTime).getTime()
+
+  let diffTime = endTime - startTime;
   const diffYear = (diffTime - (diffTime % YEAR)) / YEAR
 
   diffTime = diffTime - diffYear * YEAR
@@ -35,4 +47,4 @@ export const getDiffTime = (time1, time2) => {
     minute: diffMinute,
     second: diffSecond
   }
-}
+};

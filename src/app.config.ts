@@ -1,12 +1,11 @@
 export default defineAppConfig({
   pages: [
-    'pages/index/index',
-    'pages/acts/index',
+    'pages/activity/index',
   ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
+    navigationBarTitleText: '趣拼搭',
     navigationBarTextStyle: 'black'
   },
   // tabBar: {
@@ -16,7 +15,7 @@ export default defineAppConfig({
   //       text: '脱单',
   //     },
   //     {
-  //       pagePath: 'pages/acts/index',
+  //       pagePath: 'pages/activity/index',
   //       text: '活动（建设中...)',
   //     }
   //   ]
