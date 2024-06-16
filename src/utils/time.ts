@@ -9,6 +9,8 @@ export const YEAR = 12 * MONTH
 
 export const getWeekday = (date: number | Date) => weekdayMap[new Date(date).getDay()];
 
+export const sleep = (time: number) => new Promise(resolve => setTimeout(resolve, time));
+
 export const getPeriodName = (date: number | Date) => {
     const hours = new Date(date).getHours();
 
