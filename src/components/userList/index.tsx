@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ColorHash from 'color-hash';
-import { View } from '@tarojs/components';
+import { ITouchEvent, View } from '@tarojs/components';
 import { AtToast } from 'taro-ui';
 
 import './index.scss';
@@ -25,10 +25,11 @@ export default (props: Props) => {
     const names = (props.users || []).map(user => user.name);
     const colorHash = new ColorHash();
 
-    const showToast = (_: any) => {
+    const showToast = (event: ITouchEvent) => {
         setToastIsOpened(true);
         clearTimeout(toastTimer);
         toastTimer = setTimeout(() => setToastIsOpened(false), 2000);
+        event.stopPropagation();
     }
 
     return (

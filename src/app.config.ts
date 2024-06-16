@@ -1,6 +1,7 @@
 export default defineAppConfig({
   pages: [
     'pages/activity/index',
+    'pages/activity/badminton/detail',
   ],
   window: {
     backgroundTextStyle: 'light',

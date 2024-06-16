@@ -2,11 +2,10 @@ import React from 'react';
 import Taro from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
 import { AtTabs, AtTabsPane } from 'taro-ui';
-// import { getActivityList } from '@api/activity';
-// import Loading from '@/components/loading';
 import Loading from 'src/components/loading';
+import PageLayout from 'src/components/pageLayout';
 import { ACTIVITY_STATUS_MAP } from 'src/const';
-import testData from 'src/tmpData';
+import { getActivityList } from 'src/models';
 
 import Info from './info';
 
@@ -27,8 +26,7 @@ const Index = (): JSX.Element => {
             const tabInfo = tabData.find(item => item.key === activeTab);
             try {
                 setLoading(true);
-                // const res = await getActivityList({query: {status: `${tabInfo!.status}`}});
-                const res = {data: testData};
+                const res = await getActivityList({query: {status: `${tabInfo!.status}`}});
                 setActivityList((res?.data || []) as any);
             } finally {
                 setLoading(false);
@@ -43,7 +41,7 @@ const Index = (): JSX.Element => {
                 <View className='left w:120 h:120 of:h d:f ai:c jc:c bgc:fff br:6'>
                     <Image className='h:100%' src={item.img} />
                 </View>
-                <View className='right ml:10 d:f fd:c fs:12' style={{flex: 1}}>
+                <View className='right ml:10 d:f fd:c fs:12 fw:b' style={{flex: 1}}>
                     {/* TODO */}
                     {item.title}
                     {/* <Ellipsis text={item.title} maxLine={2} className='fw:b fs:16' /> */}
@@ -64,18 +62,20 @@ const Index = (): JSX.Element => {
     }
 
     return (
-        <AtTabs
-            tabList={tabData}
-            current={activeTab}
-            className='mt:10 bgc:fff'
-            onClick={(index) => setActiveTab(index)}
-        >
-           {tabData.map((_, key) => (
-              <AtTabsPane className='p:16' current={activeTab} index={key} key={key}>
-                {renderTabContent()}
-              </AtTabsPane>
-            ))}
-        </AtTabs>
+        <PageLayout>
+            <AtTabs
+                tabList={tabData}
+                current={activeTab}
+                className='mt:10 bgc:fff'
+                onClick={(index) => setActiveTab(index)}
+            >
+            {tabData.map((_, key) => (
+                <AtTabsPane className='p:16' current={activeTab} index={key} key={key}>
+                    {renderTabContent()}
+                </AtTabsPane>
+                ))}
+            </AtTabs>
+        </PageLayout>
     );
 };
 
