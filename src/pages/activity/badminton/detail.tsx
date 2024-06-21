@@ -90,9 +90,14 @@ export default () => {
     const renderApplyInfo = () => {
         if (!hasApplied) return null;
         return (
-            <Div className='mt:10 p:12 bgc:fff fs:12 d:f ai:c'>
-                <AtIcon value='check-circle' className='c:33ee33 mr:10' size='30' />
-                您已报名，活动拼搭成功后，发起人会联系您加入活动群，请耐心等待。
+            <Div className='mt:10 p:12 bgc:fff fs:12'>
+                <Div className='d:f ai:c fw:b'>
+                    <AtIcon value='check-circle' className='c:33ee33 mr:4' size='16' />
+                    您已报名，请微信扫码加入活动群：
+                </Div>
+                <Div className='d:f ai:c jc:c p:10'>
+                    <Image className='w:160 h:160 bw:1 bs:s bc:eee' src={detail.groupQcode} />
+                </Div>
             </Div>
         )
     }

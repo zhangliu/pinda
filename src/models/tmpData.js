@@ -34,6 +34,7 @@ export default [
           }
       ],
       "userLimit": 4,
-      "price": 144
+      "price": 144,
+      "groupQcode": "https://img1.baidu.com/it/u=3685234108,954911792&fm=253&fmt=auto&app=138&f=GIF?w=200&h=200"
   }
 ]
