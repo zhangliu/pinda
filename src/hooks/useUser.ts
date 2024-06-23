@@ -1,17 +1,18 @@
 import React from 'react';
 import cloud from 'src/utils/cloud';
 
-let cache = null;
+interface User {
+    openid: string;
+    avatarUrl?: string;
+    nickName?: string;
+    gender?: number;
+}
 
 export default () => {
-    const [user, setUser] = React.useState<any>(null);
-
-    React.useEffect(() => {cache = user}, [user]);
+    const [user, setUser] = React.useState<User | null>(null);
 
     React.useEffect(() => {
-        if (cache) return cache;
-
-        cloud.call('getUser').then(res => setUser(res));
+        cloud.call('getUser').then(res => setUser(res?.result || null));
     }, []);
 
     const updateUser = (value) => {

@@ -15,18 +15,19 @@ import { applyActivity, unApplyActivity, getActivityInfo } from 'src/models';
 
 import Info from './info';
 import ShareImg from './share.svg';
+import useUser from 'src/hooks/useUser';
+import { getUserInfo } from 'src/utils/userHelper';
 
 export default () => {
     const toastRef = React.useRef<any>();
-    // TODO
-    const userInfo = {open_id: 'ou_fd664aaaf1b2172149e66bda70a75e01'};
+    const [userInfo] = useUser();
     const [detail, setDetail] = React.useState<any>(null);
     const params = Taro.getCurrentInstance()?.router?.params;
     const id = params?.id;
 
     const loadData = (id) => getActivityInfo({ query: { id } }).then(res => setDetail(res.data));
     React.useEffect(() => {
-        loadData(id)
+        loadData(id);
     }, [id]);
 
     if (!detail) return <Loading className="mt:240" />;
@@ -41,9 +42,8 @@ export default () => {
 
         const onConfirm = async () => {
             try {
-                // TODO 处理登录
-                // if (!userInfo) return nav('/login');
-
+                const tmpUserInfo = await getUserInfo();
+                Object.assign(userInfo!, tmpUserInfo);
                 await applyActivity({data: { activityId: id, userInfo}});
                 loadData(id);
                 toastRef.current?.success('报名成功！');
@@ -67,9 +67,6 @@ export default () => {
 
         const onConfirm = async () => {
             try {
-                // TODO 登录处理
-                // if (!userInfo) return nav('/login');
-
                 await unApplyActivity({data: { activityId: id, userInfo}});
                 loadData(id);
                 toastRef.current?.success('已取消！');
