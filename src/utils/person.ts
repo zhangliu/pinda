@@ -1,1 +1,0 @@
-export const isMan = person => person.sex === 'boy'

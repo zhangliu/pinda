@@ -21,7 +21,7 @@ export default ({info, className}: any) => {
     const perPrice = (info.price / (info.userLimit || 1)).toFixed(1);
 
     return (
-        <View className={`d:f fd:c fs:13 ${className}`} style={{flex: 1}}>
+        <View className={`d:f fd:c fs:12 ${className}`} style={{flex: 1}}>
             <View className='describle mt:10 d:f ai:c jc:sb o:.6'>
                 <View>{info.placeNo}号场地</View>
                 <View>距{info.region}<Span className='ml:2'>{distance}km</Span></View>

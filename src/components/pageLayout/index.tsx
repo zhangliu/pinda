@@ -1,15 +1,15 @@
-import React from 'react';
-// import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
+import useUser from 'src/hooks/useUser';
+import Loading from '../loading';
 
 export default (props) => {
-  React.useEffect(() => {
-    (async () => {
-    })()
-  }, []);
+  const [user] = useUser();
 
+  if (!user) {
+    return <Loading className='mt:120' />;
+  }
   return (
-    <View className='bgc:f7f7f7' style={{height: '100vh'}}>
+    <View className='bgc:f7f7f7 h:100%' style={{minHeight: '100vh'}}>
       {props.children}
     </View>
   );

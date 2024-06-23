@@ -37,7 +37,7 @@ const Index = (): JSX.Element => {
     const renderItem = (item: any, key: string) => {
         const goDetail = () => Taro.navigateTo({url: `/pages/activity/badminton/detail?id=${item.id}`})
         return (
-            <View className='d:f bw:0 bs:s bc:eee bbw:1' key={key} onClick={goDetail}>
+            <View className='d:f bw:0 bs:s bc:eee bbw:1 pb:10' key={key} onClick={goDetail}>
                 <View className='left w:120 h:120 of:h d:f ai:c jc:c bgc:fff br:6'>
                     <Image className='h:100%' src={item.img} />
                 </View>
