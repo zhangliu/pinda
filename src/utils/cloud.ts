@@ -3,6 +3,7 @@ const call = (funcName: string, params?: any) =>
         name: 'pdServer',
         data: {
             type: funcName,
+            params,
         },
     })
 

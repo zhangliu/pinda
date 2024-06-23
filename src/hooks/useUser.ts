@@ -1,7 +1,7 @@
 import React from 'react';
 import cloud from 'src/utils/cloud';
 
-interface User {
+export interface User {
     openid: string;
     avatarUrl?: string;
     nickName?: string;

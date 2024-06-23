@@ -5,7 +5,7 @@ import { AtTabs, AtTabsPane } from 'taro-ui';
 import Loading from 'src/components/loading';
 import PageLayout from 'src/components/pageLayout';
 import { ACTIVITY_STATUS_MAP } from 'src/const';
-import { getActivityList } from 'src/models';
+import cloud from 'src/utils/cloud';
 
 import Info from './info';
 
@@ -26,8 +26,8 @@ const Index = (): JSX.Element => {
             const tabInfo = tabData.find(item => item.key === activeTab);
             try {
                 setLoading(true);
-                const res = await getActivityList({query: {status: `${tabInfo!.status}`}});
-                setActivityList((res?.data || []) as any);
+                const res = await cloud.call('getActivityList', {status: `${tabInfo!.status}`});
+                setActivityList((res?.result || []) as any);
             } finally {
                 setLoading(false);
             }
@@ -35,7 +35,7 @@ const Index = (): JSX.Element => {
     }, [activeTab]);
 
     const renderItem = (item: any, key: string) => {
-        const goDetail = () => Taro.navigateTo({url: `/pages/activity/badminton/detail?id=${item.id}`})
+        const goDetail = () => Taro.navigateTo({url: `/pages/activity/badminton/detail?id=${item._id}`})
         return (
             <View className='d:f bw:0 bs:s bc:eee bbw:1 pb:10' key={key} onClick={goDetail}>
                 <View className='left w:120 h:120 of:h d:f ai:c jc:c bgc:fff br:6'>

@@ -11,12 +11,12 @@ import PageLayout from 'src/components/pageLayout';
 import Loading from 'src/components/loading';
 import SealImg from 'src/components/sealImg';
 import { ACTIVITY_STATUS_MAP } from 'src/const';
-import { applyActivity, unApplyActivity, getActivityInfo } from 'src/models';
+import useUser from 'src/hooks/useUser';
+import { getUserInfo } from 'src/utils/userHelper';
+import cloud from 'src/utils/cloud';
 
 import Info from './info';
 import ShareImg from './share.svg';
-import useUser from 'src/hooks/useUser';
-import { getUserInfo } from 'src/utils/userHelper';
 
 export default () => {
     const toastRef = React.useRef<any>();
@@ -25,7 +25,7 @@ export default () => {
     const params = Taro.getCurrentInstance()?.router?.params;
     const id = params?.id;
 
-    const loadData = (id) => getActivityInfo({ query: { id } }).then(res => setDetail(res.data));
+    const loadData = (id) => cloud.call('getActivityInfo', {id}).then(res => setDetail(res?.result));
     React.useEffect(() => {
         loadData(id);
     }, [id]);
@@ -34,7 +34,7 @@ export default () => {
 
     const isSuccess = Number(detail.status) === ACTIVITY_STATUS_MAP.SUCCESS;
 
-    const hasApplied = (detail.users || []).find((item: any) => item.open_id === userInfo?.open_id);
+    const hasApplied = (detail.users || []).find((item: any) => item.openid === userInfo?.openid);
 
     const renderApplyButton = () => {
         if (hasApplied) return null;
@@ -44,7 +44,8 @@ export default () => {
             try {
                 const tmpUserInfo = await getUserInfo();
                 Object.assign(userInfo!, tmpUserInfo);
-                await applyActivity({data: { activityId: id, userInfo}});
+                const res = await cloud.call('applyActivity', {activityId: id, userInfo});
+                console.log(res, 'xxxxxxxxxxx444')
                 loadData(id);
                 toastRef.current?.success('报名成功！');
             } catch(error: any) {
@@ -67,7 +68,7 @@ export default () => {
 
         const onConfirm = async () => {
             try {
-                await unApplyActivity({data: { activityId: id, userInfo}});
+                cloud.call('applyActivity', { activityId: id, userInfo}).then(res => console.log(res, 'xxxxxxxxxxxxx333'));
                 loadData(id);
                 toastRef.current?.success('已取消！');
             } catch(error: any) {
