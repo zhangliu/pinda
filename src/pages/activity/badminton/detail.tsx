@@ -44,8 +44,7 @@ export default () => {
             try {
                 const tmpUserInfo = await getUserInfo();
                 Object.assign(userInfo!, tmpUserInfo);
-                const res = await cloud.call('applyActivity', {activityId: id, userInfo});
-                console.log(res, 'xxxxxxxxxxx444')
+                await cloud.call('applyActivity', {activityId: id, userInfo});
                 loadData(id);
                 toastRef.current?.success('报名成功！');
             } catch(error: any) {
@@ -68,7 +67,7 @@ export default () => {
 
         const onConfirm = async () => {
             try {
-                cloud.call('applyActivity', { activityId: id, userInfo}).then(res => console.log(res, 'xxxxxxxxxxxxx333'));
+                await cloud.call('unApplyActivity', {activityId: id, userInfo});
                 loadData(id);
                 toastRef.current?.success('已取消！');
             } catch(error: any) {

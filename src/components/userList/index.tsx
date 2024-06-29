@@ -22,7 +22,7 @@ export default (props: Props) => {
         users[2] = {type: omitType};
     }
 
-    const names = (props.users || []).map(user => user.name);
+    const names = (props.users || []).map(user => user.nickName);
     const colorHash = new ColorHash();
 
     const showToast = (event: ITouchEvent) => {
@@ -37,8 +37,8 @@ export default (props: Props) => {
             <View className='d:f ai:c' onClick={showToast}>
                 {users.map((user: any, key) => {
                     const isOmitUser = user.type === omitType;
-                    const textAvatar = (isOmitUser ? '···' : user.name.substring(0, 1)).toUpperCase();
-                    const bgcColor = isOmitUser ? colorHash.hex('...') : colorHash.hex(user.name || '');
+                    const textAvatar = (isOmitUser ? '···' : user.nickName.substring(0, 1)).toUpperCase();
+                    const bgcColor = isOmitUser ? colorHash.hex('...') : colorHash.hex(user.nickName || '');
                     return (
                         <View
                             key={key}
