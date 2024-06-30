@@ -14,6 +14,7 @@ import { ACTIVITY_STATUS_MAP } from 'src/const';
 import useUser from 'src/hooks/useUser';
 import { getUserInfo } from 'src/utils/userHelper';
 import cloud from 'src/utils/cloud';
+import pd from 'src/utils/pd';
 
 import Info from './info';
 import ShareImg from './share.svg';
@@ -46,7 +47,7 @@ export default () => {
                 Object.assign(userInfo!, tmpUserInfo);
                 await cloud.call('applyActivity', {activityId: id, userInfo});
                 loadData(id);
-                toastRef.current?.success('报名成功！');
+                pd.toast.success('报名成功！');
             } catch(error: any) {
                 toastRef.current?.error(error?.message || '报名失败，请稍后重试');
             }
@@ -69,7 +70,7 @@ export default () => {
             try {
                 await cloud.call('unApplyActivity', {activityId: id, userInfo});
                 loadData(id);
-                toastRef.current?.success('已取消！');
+                pd.toast.success('已取消！');
             } catch(error: any) {
                 toastRef.current.error(error?.message || '取消失败，请稍后重试');
             }
