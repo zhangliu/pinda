@@ -4,6 +4,8 @@ import { AtModal } from "taro-ui";
 import { AtModalProps } from "taro-ui/types/modal";
 import Toast from "../toast";
 
+import './index.scss';
+
 interface ModalProps extends AtModalProps {
     children: React.ReactNode;
     isOpened?: boolean;

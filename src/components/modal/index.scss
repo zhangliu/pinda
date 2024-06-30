@@ -1,0 +1,9 @@
+.my-modal {
+    .at-modal__content {
+        display: flex;
+        align-items: center;
+        .wx-scroll-view {
+            text-align: center;
+        }
+    }
+}

@@ -52,7 +52,7 @@ export default () => {
         }
         return (
             <Modal
-                content='报名后将会通知其他玩家，并拉你进建活动群！'
+                content='确认参加此次活动么？'
                 confirmText='确认报名'
                 onConfirm={onConfirm}
             >
@@ -75,7 +75,7 @@ export default () => {
         }
         return (
             <Modal
-                content='确认不参加次活动么？'
+                content='确认放弃此次活动么？'
                 onConfirm={onConfirm}
             >
                 <DangerButton className='w:120 mr:10! o:.8'>取消报名</DangerButton>
