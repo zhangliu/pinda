@@ -6,7 +6,6 @@ import Div from 'src/components/html/div';
 import Button from 'src/components/button';
 import DangerButton from 'src/components/button/dangerButton';
 import Modal from 'src/components/modal';
-import Toast from 'src/components/toast';
 import PageLayout from 'src/components/pageLayout';
 import Loading from 'src/components/loading';
 import SealImg from 'src/components/sealImg';
@@ -20,7 +19,6 @@ import Info from './info';
 import ShareImg from './share.svg';
 
 export default () => {
-    const toastRef = React.useRef<any>();
     const [userInfo] = useUser();
     const [detail, setDetail] = React.useState<any>(null);
     const params = Taro.getCurrentInstance()?.router?.params;
@@ -49,7 +47,7 @@ export default () => {
                 loadData(id);
                 pd.toast.success('报名成功！');
             } catch(error: any) {
-                toastRef.current?.error(error?.message || '报名失败，请稍后重试');
+                pd.toast.error(error?.message || '报名失败，请稍后重试');
             }
         }
         return (
@@ -72,7 +70,7 @@ export default () => {
                 loadData(id);
                 pd.toast.success('已取消！');
             } catch(error: any) {
-                toastRef.current.error(error?.message || '取消失败，请稍后重试');
+                pd.toast.error(error?.message || '取消失败，请稍后重试');
             }
         }
         return (
@@ -124,7 +122,6 @@ export default () => {
                     </Div>
                 </Div>
             </Div>
-            <Toast ref={toastRef} />
         </PageLayout>
     );
 };
