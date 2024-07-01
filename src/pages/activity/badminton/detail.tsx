@@ -85,6 +85,7 @@ export default () => {
 
     const renderApplyInfo = () => {
         if (!hasApplied) return null;
+        if (!detail.groupQcode) return null;
         return (
             <Div className='mt:10 p:12 bgc:fff fs:12'>
                 <Div className='d:f ai:c fw:b'>
