@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Image, View } from '@tarojs/components';
-import { AtButton } from 'taro-ui';
+import { Image, View, Button } from '@tarojs/components';
 import { AtButtonProps } from 'taro-ui/types/button';
 
 export interface ButtonProps extends AtButtonProps {
@@ -9,10 +8,14 @@ export interface ButtonProps extends AtButtonProps {
 }
 
 export default ({icon, type = 'primary', className, ...props}: Props) => (
-    <AtButton {...props} type={type} className={`m:0 ${className || ''}`} size="small">
+    <Button {...props} type={type} className={`m:0 ${className || ''}`} size="small">
         <View className='d:f ai:c jc:c fs:14 pl:10 pr:10'>
-            {icon ? <Image className='h:14 w:14 mr:4' src={icon} /> : null}
-            {props.children}
+            {icon && (
+                <View className='d:f ai:c' style={{flexShrink: 0}}>
+                    <Image className='h:14 w:14 mr:4' src={icon} />
+                </View>
+            )}
+            <View  style={{whiteSpace: 'nowrap'}}>{props.children}</View>
         </View>
-    </AtButton>
+    </Button>
 );
