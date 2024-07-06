@@ -11,11 +11,11 @@ import Loading from 'src/components/loading';
 import SealImg from 'src/components/sealImg';
 import { ACTIVITY_STATUS_MAP } from 'src/const';
 import useUser from 'src/hooks/useUser';
-import { getUserInfo } from 'src/utils/userHelper';
 import cloud from 'src/utils/cloud';
 import pd from 'src/utils/pd';
 
 import Info from './info';
+import ApplyModal from './applyModal';
 import ShareImg from './share.svg';
 
 export default () => {
@@ -39,10 +39,9 @@ export default () => {
         if (hasApplied) return null;
         if (isSuccess) return null;
 
-        const onConfirm = async () => {
+        const onConfirm = async (nickName: string) => {
             try {
-                const tmpUserInfo = await getUserInfo();
-                Object.assign(userInfo!, tmpUserInfo);
+                Object.assign(userInfo!, {nickName});
                 await cloud.call('applyActivity', {activityId: id, userInfo});
                 loadData(id);
                 pd.toast.success('报名成功！');
@@ -51,13 +50,9 @@ export default () => {
             }
         }
         return (
-            <Modal
-                content='确认参加此次活动么？'
-                confirmText='确认报名'
-                onConfirm={onConfirm}
-            >
+            <ApplyModal onConfirm={onConfirm}>
                 <Button className='w:120 mr:10!'>立即报名</Button>
-            </Modal>
+            </ApplyModal>
         );
     }
 

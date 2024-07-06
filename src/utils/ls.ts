@@ -8,7 +8,7 @@ const tryParse = (value: any, defaultValue: any) => {
     }
 }
 
-export const getItem = (key: string, defaultValue: any) => {
+export const getItem = (key: string, defaultValue?: any) => {
     try {
         return tryParse(Taro.getStorageSync(key), defaultValue);
     } catch(error) {
@@ -17,3 +17,8 @@ export const getItem = (key: string, defaultValue: any) => {
 }
 
 export const setItem = (key: string, value: any) => Taro.setStorageSync(key, JSON.stringify(value));
+
+export default {
+    getItem,
+    setItem,
+}
